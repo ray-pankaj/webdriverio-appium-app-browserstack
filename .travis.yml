@@ -3,7 +3,8 @@ node_js:
   - "4.3"
 
 install:
-  - apt-get install jq
+  - sudo apt-get update
+  - sudo apt-get install -y jq
 
 script:
   - curl "https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa" -o "BStackSampleApp.ipa"
