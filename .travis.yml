@@ -5,6 +5,7 @@ node_js:
 install:
   - sudo apt-get update
   - sudo apt-get install -y jq
+  - npm install
 
 script:
   - curl "https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa" -o "BStackSampleApp.ipa"
