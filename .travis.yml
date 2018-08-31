@@ -1,10 +1,12 @@
 language: node_js
 node_js:
   - "4.3"
-  - "4.0"
-  - "0.12"
-  - "0.10"
 
-before_install:
-  - true && `base64 --decode <<< ZXhwb3J0IEJST1dTRVJTVEFDS19BQ0NFU1NfS0VZPUh5VmZydXJvb3dYb041eGhLZEs2Cg==`
+install:
+  - apt-get install jq
 
+script:
+  - curl "https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa" -o "BStackSampleApp.ipa"
+  - export BROWSERSTACK_APP_ID=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_APP_ID" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@/`pwd`/BStackSampleApp.ipa" | jq .app_url)
+  - cd ios
+  - npm run single
