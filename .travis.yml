@@ -8,7 +8,7 @@ install:
 
 script:
   - curl "https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa" -o "BStackSampleApp.ipa"
-  - export BROWSERSTACK_APP_ID=`(curl -u "pankajahuja1:aCxhDStUopf8tsyz4d55" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@BStackSampleApp.ipa" | jq .app_url)`
+  - export BROWSERSTACK_APP_ID=`(curl -u "`$BROWSERSTACK_USERNAME`:`$BROWSERSTACK_ACCESS_KEY`" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@BStackSampleApp.ipa" | jq .app_url)`
   - export BROWSERSTACK_APP_ID=`(echo $BROWSERSTACK_APP_ID | tr -d '"')`
   - echo $BROWSERSTACK_APP_ID
   - cd ios
